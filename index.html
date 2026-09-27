@@ -1059,7 +1059,7 @@
       const q = activeQuestions[qIdx];
 
       btn.disabled = true;
-      btn.innerHTML = `<span>⏳ Grading answer with Cambridge AI Examiner...</span>`;
+      btn.innerHTML = `<span>Checking</span>`;
 
       try {
         const payload = {
@@ -1084,7 +1084,7 @@
         if (evalRes.error) {
           alert("Evaluation Error: " + evalRes.error);
           btn.disabled = false;
-          btn.innerHTML = `<span>✨ Evaluate with Cambridge AI Examiner</span>`;
+          btn.innerHTML = `<span>✨ Check with AI Examiner</span>`;
           return;
         }
 
@@ -1107,7 +1107,7 @@
         console.error(err);
         alert("Evaluation error. Please try again.");
         btn.disabled = false;
-        btn.innerHTML = `<span>✨ Evaluate with Cambridge AI Examiner</span>`;
+        btn.innerHTML = `<span>✨ Check your answer</span>`;
       }
     }
 
