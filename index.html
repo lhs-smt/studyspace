@@ -305,7 +305,7 @@
           <span id="quizSubjectTag" class="px-2.5 py-0.5 text-[10px] font-bold rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800/50">Subject</span>
           <h3 id="quizModalTitle" class="text-base font-bold text-slate-900 dark:text-white mt-1">Quiz</h3>
         </div>
-        <!-- 45s QUESTION TIMER DISPLAY (MCQ Only) -->
+        <!-- QUESTION TIMER DISPLAY (MCQ Only) -->
         <div class="flex items-center gap-2">
           <div id="timerContainer" class="hidden px-3 py-1 rounded-xl bg-amber-100 dark:bg-amber-950/80 border border-amber-300 dark:border-amber-700/60 text-amber-800 dark:text-amber-300 text-xs font-extrabold flex items-center gap-1.5">
             ⏱️ <span id="timerCountdown">45</span>s
@@ -375,7 +375,13 @@
 
     function startQuestionTimer() {
       stopQuestionTimer();
-      timeLeft = 45;
+
+      // Check if the current active question has an image link
+      const currentQ = activeQuestions[currentQuestionIndex];
+      const hasImage = currentQ && currentQ.imageUrl && currentQ.imageUrl.trim().length > 0;
+
+      // Set timer to 90 seconds for questions with images, otherwise default to 45 seconds
+      timeLeft = hasImage ? 90 : 45;
 
       const timerBox = document.getElementById("timerContainer");
       const timerDisplay = document.getElementById("timerCountdown");
