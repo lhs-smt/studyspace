@@ -871,7 +871,7 @@
 
       const qTitle = document.createElement("h4");
       qTitle.className = "text-sm font-bold text-slate-900 dark:text-white";
-      qTitle.innerText = `Q${idx + 1}. ${q.question} ${q.maxMarks ? `[${q.maxMarks} marks]` : ''}`;
+      qTitle.innerText = `Q${idx + 1}. ${q.question}`;
       qCard.appendChild(qTitle);
 
       if (q.imageUrl) {
